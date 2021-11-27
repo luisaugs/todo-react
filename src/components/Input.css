@@ -1,0 +1,58 @@
+.text-input-container {
+    box-sizing: border-box;
+    max-width: 1500px;
+    width: 70%;
+    background-color: rgb(225, 225, 225);
+    border-radius: 20px;
+    margin: 1.5em auto;
+    box-shadow: 5px 5px 5px rgba(150, 150, 150, 0.5);
+    padding:1em 0;
+}
+
+
+.text-input {
+    height: 2em;
+    width: 80%;
+    border: none;
+    outline:none;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(150, 150, 150, 0.25);
+    font-size: 1em;
+}
+
+.btn-submit {
+    height: 2.5em;
+    width: 15%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:500px) {
+    .text-input-container {
+        width: 90%;
+    }
+
+    .text-input {
+       
+    }
+    
+    .btn-submit {
+        
+    }
+    
+
+}
