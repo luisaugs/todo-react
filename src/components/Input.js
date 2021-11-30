@@ -1,18 +1,37 @@
+import { useState } from 'react';
 import './Input.css';
 
 
-const Input = () => {
+const Input = ({addTodos}) => {
+
+    const [todo, setTodo] = useState('')
+
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+        addTodos()
+
+
+    }
+
 
     return (
         <div className="text-input-container">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input
                     className="text-input"
                     placeholder="todo"
-                    required
                     autoFocus
-                    type="text" />
-                <button className="btn-submit">Save!</button>
+                    type="text"
+                    value={todo}
+                    onChange={(e) => setTodo(e.target.value)}
+                />
+                <button
+                    className="btn-submit"
+                    type="submit"
+                >
+                    Save!
+                </button>
             </form>
         </div>
     );
