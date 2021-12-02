@@ -13,10 +13,11 @@
 
 .alert-card {
     width: 80%;
-    height: 12em;
+    min-width: 300px;
+    height: 10em;
     background-color: seashell;
     top: calc((100% - 10em)/2);
-    border-radius: 1em;
+    border-radius: 0.75em;
     max-width: 400px;
     min-width: 250px;
     display: flex;
@@ -27,9 +28,9 @@
 .alert-card-title {
     width: 80%;
     margin: 0;
-    text-align: center;
+    text-align: left;
     font-weight: 300;
-    font-size: 1.5em;
+    font-size: 1.25em;
     align-self:center;
 }
 
@@ -38,7 +39,7 @@
     width: 80%;
     align-self:center;
     border: 1px solid dodgerblue;
-    border-radius: 1em;
+    border-radius: 0.5em;
     background-color: dodgerblue;
     color: white;
     font-size: 1em;
@@ -54,6 +55,62 @@
 }
 
 
+.order-btns {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end
+}
+
+.delete-btn {
+    margin: 0 5px;
+    width: 25%;
+    padding: 10px;
+    align-self: center;
+    border: 1px solid red;
+    border-radius: 0.5em;
+    background-color: red;
+    color: white;
+    font-size: 1em;
+    transition: 350ms ease-out;
+}
+
+.cancel-btn {
+    margin: 0 5px;
+    width: 25%;
+    padding: 10px;
+    align-self: center;
+    border: 1px solid gray;
+    border-radius: 0.5em;
+    background-color: gray;
+    color: white;
+    font-size: 1em;
+    transition: 350ms ease-out;
+
+}
+
+.delete-btn:hover {
+
+    border: 1px solid red;
+    background-color: white;
+    color: red;
+    font-weight: 600;
+    transition: 350ms ease-out;
+}
+
+.cancel-btn:hover {
+
+    border: 1px solid grey;
+    background-color: white;
+    color: grey;
+    font-weight: 600;
+    transition: 350ms ease-out;
+}
+
+
+
+
+
 
 
 @media screen and (max-width:500px) {
@@ -66,5 +123,23 @@
     .alert-card-btn {
         font-size: 1em;
     }
+
+    .order-btns {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .delete-btn {
+        width: 85%;
+        margin: 2.5px 0;
+    }
+    
+    .cancel-btn {
+        width: 85%;
+        margin: 2.5px 0;
+    }
+
 
 }

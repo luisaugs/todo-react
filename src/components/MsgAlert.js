@@ -4,7 +4,7 @@ import './MsgAlert.css';
 const MsgAlert = ({closeModal}) => {
 
     return (
-        <div className="msg-alert-main">
+        <div className="msg-alert-main" onClick={()=>closeModal()}>
             <div className="alert-card">
             <h3 className="alert-card-title">You did not enter todo to save!</h3>
             <button 
