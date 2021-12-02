@@ -1,0 +1,32 @@
+.card-no-todo {
+    box-sizing: border-box;
+    max-width: 1500px;
+    width: 70%;
+    background-color: rgb(245, 245, 245);
+    border-radius: 20px;
+    margin: 5px auto;
+    box-shadow: 2px 2px 5px rgba(150, 150, 150, 0.5);
+    padding: 10px;
+    color: #444;
+    font-weight: normal;
+}
+
+.card-no-todo h2 {
+    font-size: 1.5em;
+    margin: 10px auto;
+}
+
+.card-no-todo p {
+    font-size: 1em;
+    margin: 10px auto;
+}
+
+
+
+
+@media screen and (max-width:500px) {
+    .card-no-todo {
+        width: 90%;
+    }
+
+}

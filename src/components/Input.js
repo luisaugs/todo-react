@@ -2,16 +2,30 @@ import { useState } from 'react';
 import './Input.css';
 
 
-const Input = ({addTodos}) => {
+const Input = ({ addTodo, openModal}) => {
 
-    const [todo, setTodo] = useState('')
+
+    const [body, setBody] = useState("");
+   
+
 
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        addTodos()
 
+        if(!body) {
+            openModal()
+            return
+        }
 
+        addTodo({
+            id: Date.now(),
+            body: body,
+            priority: "red",
+            completed: false
+        })
+
+        setBody("")
     }
 
 
@@ -23,8 +37,8 @@ const Input = ({addTodos}) => {
                     placeholder="todo"
                     autoFocus
                     type="text"
-                    value={todo}
-                    onChange={(e) => setTodo(e.target.value)}
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
                 />
                 <button
                     className="btn-submit"
