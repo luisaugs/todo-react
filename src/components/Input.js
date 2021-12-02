@@ -21,7 +21,7 @@ const Input = ({ addTodo, openModal}) => {
         addTodo({
             id: Date.now(),
             body: body,
-            priority: "red",
+            priority: "high",
             completed: false
         })
 

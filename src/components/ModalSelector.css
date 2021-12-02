@@ -1,0 +1,175 @@
+.main-modal-selector {
+    background-color: rgba(100, 100, 100, 0.5);
+    position: fixed;
+    backdrop-filter: blur(2px);
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-card-selector {
+    width: 80%;
+    min-width: 300px;
+    height: 10em;
+    background-color: seashell;
+    top: calc((100% - 10em)/2);
+    border-radius: 0.75em;
+    max-width: 400px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.selector-title {
+    margin: 0 auto;
+    width: 90%;
+    font-size: 1.25em;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.cont {
+    width: 90%;
+    /* border: 1px solid red; */
+    margin: 0 auto;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn {
+    padding: 1em 2em;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+.btn-close {
+    background-color: gray;
+    color: white;
+    border: 1px solid gray;
+    transition: 350ms ease-in;
+
+}
+
+.btn-close:hover {
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
+    transition: 350ms ease-in;
+}
+
+.btn-close:active {
+    transform: translateY(1px);
+}
+
+.btn-priority-high {
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    transition: 350ms ease-in;
+    transform: scale(1.00);
+}
+
+.btn-priority-med {
+    background-color: orangered;
+    border: 1px solid orangered;
+    color: white;
+    transition: 350ms ease-in;
+    transform: scale(1.00);
+}
+
+.btn-priority-low {
+    background-color: green;
+    border: 1px solid green;
+    color: white;
+    transition: 350ms ease-in;
+    transform: scale(1.00);
+}
+
+
+.btn-priority-high:hover {
+    background-color: white;
+    border: 1px solid red;
+    color: red;
+    transition: 350ms ease-in;
+    transform: scale(1.05);
+}
+
+.btn-priority-med:hover {
+    background-color: white;
+    border: 1px solid orangered;
+    color: orangered;
+    transition: 350ms ease-in;
+    transform: scale(1.05);
+}
+
+.btn-priority-low:hover {
+    background-color: white;
+    border: 1px solid green;
+    color: green;
+    transition: 350ms ease-in;
+    transform: scale(1.05);
+}
+
+
+
+@media screen and (max-width:500px) {
+
+
+    .main-card-selector {
+        width: 80%;
+        min-width: 300px;
+        height: 18em;
+        top: calc((100% - 18em)/2); 
+    }
+
+    .selector-title {
+        width: 90%;
+        font-size: 1.25em;
+        font-weight: 400;
+        text-overflow: ellipsis;
+        white-space: normal;
+    }
+
+
+    .selector-title {
+        margin: 0 auto;
+        width: 90%;
+        font-size: 1.25em;
+        font-weight: 400;
+        text-overflow: ellipsis;
+        white-space: normal;
+    }
+
+    .btn-container {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .btn {
+        width: 75%;
+        border-radius: 5px;
+        border: 1px solid;
+        margin: 5px 0;
+        font-size: 1.05em;
+        padding: 0.55em 0;
+    }
+
+    .btn-close {
+        border-radius: 25px;
+        padding: 0.75em 0;
+        font-size: 1.0em;
+        font-weight: normal;
+    }
+
+
+}

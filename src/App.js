@@ -1,17 +1,14 @@
 import { useEffect, useState } from 'react';
 
 import Input from './components/Input';
-import ModaleDelete from './components/ModalDelete';
 import MsgAlert from './components/MsgAlert';
 import NoTodos from './components/NoTodos';
 import TodoElement from './components/TodoElement';
-// import TodoElement from './components/TodoElement';
 
 function App() {
 
   const [todos, setTodos] = useState([])
   const [alert, setAlert] = useState(false)
-  // const [modalDelete, setModalDelete] = useState(false)
 
   //add todo to array
   const addTodo = (todo) => {
@@ -41,19 +38,6 @@ function App() {
     setTodos(todos.map((item) => iterateFunction(item, id)))
 
   }
-
-  // modal delete
-  // const openModalDelete = (id) => {
-
-  //   setModalDelete(true)
-
-  // }
-
-  // const closeModalDelete = () => {
-
-  //   setModalDelete(false)
-
-  // }
 
   const closeModal = () => {
     setAlert(false)
@@ -94,7 +78,6 @@ function App() {
             completed={todo.completed}
             removeTodo={removeTodo}
             checkCompleted={checkCompleted}
-            // openModalDelete={openModalDelete}
           />
         ))
       }
@@ -103,7 +86,7 @@ function App() {
       }
       {alert && <MsgAlert
         closeModal={closeModal}
-      />}      
+      />}   
     </div>
   );
 }
