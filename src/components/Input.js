@@ -1,19 +1,21 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { GlobalContext } from '../context/GlobalContext';
 import './Input.css';
 
 
-const Input = ({ addTodo, openModal}) => {
+const Input = ({ openModal }) => {
 
 
     const [body, setBody] = useState("");
-   
+    const {addTodo}=useContext(GlobalContext);
+
 
 
     const handleSubmit = (e) => {
 
         e.preventDefault();
 
-        if(!body) {
+        if (!body) {
             openModal()
             return
         }
@@ -21,12 +23,14 @@ const Input = ({ addTodo, openModal}) => {
         addTodo({
             id: Date.now(),
             body: body,
-            priority: "high",
+            priority: p[parseInt(Math.random() * 3)],
             completed: false
         })
 
         setBody("")
     }
+
+    const p = ["high", "low", "medium"]
 
 
     return (

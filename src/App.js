@@ -1,43 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 
 import Input from './components/Input';
 import MsgAlert from './components/MsgAlert';
 import NoTodos from './components/NoTodos';
 import TodoElement from './components/TodoElement';
+import { GlobalContext } from './context/GlobalContext';
 
 function App() {
 
-  const [todos, setTodos] = useState([])
-  const [alert, setAlert] = useState(false)
-
-  //add todo to array
-  const addTodo = (todo) => {
-
-    setTodos((old) => [...old, todo])
-
-  }
-
-    //remove todo from array
-    const removeTodo = (id) => {
-
-      setTodos((prev) => prev.filter((todo) => todo.id !== id))
   
-    }
+  const [alert, setAlert] = useState(false)
+  const { todos } = useContext(GlobalContext)
 
-  const iterateFunction = (obj, id) => {
+  // const iterateFunction = (obj, id) => {
 
-    if (obj.id === id) {
-      obj.completed = !obj.completed
-    }
+  //   if (obj.id === id) {
+  //     obj.completed = !obj.completed
+  //   }
 
-    return obj
-  }
+  //   return obj
+  // }
 
-  const checkCompleted = (id) => {
 
-    setTodos(todos.map((item) => iterateFunction(item, id)))
-
-  }
 
   const closeModal = () => {
     setAlert(false)
@@ -47,18 +31,6 @@ function App() {
     setAlert(true)
   }
 
-  useEffect(() => {
-    if (localStorage.getItem('todos')) {
-      setTodos(JSON.parse(localStorage.getItem('todos')))
-    }
-  }, [])
-
-
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos))
-  }, [todos])
-
-
   return (
     <div className="App">
       <h1>
@@ -66,18 +38,19 @@ function App() {
       </h1>
 
       <Input
-        addTodo={addTodo}
+        // addTodo={addTodo}
         openModal={openModal}
       />
       {todos &&
         todos.map((todo) => (
           <TodoElement
             key={todo.id}
-            body={todo.body}
-            id={todo.id}
-            completed={todo.completed}
-            removeTodo={removeTodo}
-            checkCompleted={checkCompleted}
+            // body={todo.body}
+            // id={todo.id}
+            // completed={todo.completed}
+            {...todo}
+            // removeTodo={removeTodo}
+            // checkCompleted={checkCompleted}
           />
         ))
       }

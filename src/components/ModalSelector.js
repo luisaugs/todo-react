@@ -1,7 +1,14 @@
+import { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalContext';
 import './ModalSelector.css';
 
 
-const ModalSelector = ({ closeModalSelector, priority }) => {
+const ModalSelector = ({ closeModalSelector, id }) => {
+
+
+    const { checkColor } = useContext(GlobalContext);
+
+
     return (
         <div className="main-modal-selector" onClick={closeModalSelector}>
             <div className="main-card-selector">
@@ -9,19 +16,19 @@ const ModalSelector = ({ closeModalSelector, priority }) => {
                 <div className="btn-container cont">
                     <button
                         className="btn btn-priority-high"
-                        value="high"
+                        onClick={() => checkColor(id, "high")}
                     >
                         HIGH
                     </button>
                     <button
                         className="btn btn-priority-med"
-                        value="medium"
+                        onClick={() => checkColor(id, "medium")}
                     >
                         MEDIUM
                     </button>
                     <button
                         className="btn btn-priority-low"
-                        value="low"
+                        onClick={()=>checkColor(id,"low")}
                     >
                         LOW
                     </button>

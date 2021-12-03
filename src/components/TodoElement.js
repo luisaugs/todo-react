@@ -1,49 +1,39 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import ModalDelete from './ModalDelete';
 import { X } from 'react-bootstrap-icons';
 import './TodoElement.css';
 import ModalSelector from './ModalSelector';
+import { GlobalContext } from '../context/GlobalContext';
 
 
 
-const TodoElement = ({ id, body, priority, completed, checkCompleted, removeTodo }) => {
+const TodoElement = ({ id, body, priority, completed }) => {
 
 
     const [isChecked, setIsChecked] = useState(false)
     const [modalDelete, setModalDelete] = useState(false);
     const [modSelector, setModSelector] = useState(false);
+    const { checkCompleted } = useContext(GlobalContext);
 
     const handleOnChange = () => {
         setIsChecked(!isChecked);
-        checkCompleted(id)
-    };
-
-
-    const handleDelete = () => {
-        setModalDelete(true)
+        checkCompleted(id);
     }
 
-    const closeModalDelete = () => {
-        setModalDelete(false)
+    const priorities = {
+        high: "priority-red",
+        medium: "priority-blue",
+        low: "priority-green"
     }
-
-    const closeModalSelector = () => {
-        setModSelector(false)
-    }
-
-
-
-
-
 
     return (
         <>
             <div className="card">
                 {/* <div className="container-card" key={id}> */}
                 <div className={`container-card ${completed ? "check-on" : ""}`} key={id}>
-                    <div 
-                        className="priority-btn priority-red"
-                        onClick={()=>{setModSelector(true)}}
+                    <div
+                        className={`priority-btn ${priorities[priority]}`}
+                        onClick={() => { setModSelector(true) }}
                     ></div>
                     <div>
                         <input
@@ -55,7 +45,7 @@ const TodoElement = ({ id, body, priority, completed, checkCompleted, removeTodo
                     <div className="p-text">{body}</div>
                     <div
                         className="delete-icon"
-                        onClick={() => handleDelete()}
+                        onClick={() => setModalDelete(true)}
                     >
                         <X className="" />
                     </div>
@@ -64,15 +54,16 @@ const TodoElement = ({ id, body, priority, completed, checkCompleted, removeTodo
 
             {modalDelete &&
                 <ModalDelete
-                    closeModalDelete={closeModalDelete}
+                    closeModalDelete={() => setModalDelete(false)}
                     id={id}
-                    removeTodo={removeTodo}
+                // removeTodo={removeTodo}
                 />
             }
 
             {modSelector &&
                 <ModalSelector
-                    closeModalSelector={closeModalSelector}
+                    closeModalSelector={() => setModSelector(false)}
+                    id={id}
                 />
             }
 

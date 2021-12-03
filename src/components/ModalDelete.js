@@ -1,10 +1,10 @@
+import { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalContext';
 import './MsgAlert.css';
 
-const ModalDelete = ({ closeModalDelete, id, removeTodo }) => {
+const ModalDelete = ({ closeModalDelete, id }) => {
 
-    const deleteTodo = (id) => {
-        removeTodo(id)
-    }
+    const { removeTodo} = useContext(GlobalContext);
 
 
     return (
@@ -21,7 +21,7 @@ const ModalDelete = ({ closeModalDelete, id, removeTodo }) => {
                     </button>
                     <button
                         className="delete-btn"
-                        onClick={() => deleteTodo(id)}
+                        onClick={() => removeTodo(id)}
                     >
                         Delete
                     </button>
