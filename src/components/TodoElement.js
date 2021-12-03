@@ -1,19 +1,16 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ModalDelete from './ModalDelete';
 import { X } from 'react-bootstrap-icons';
 import './TodoElement.css';
 import ModalSelector from './ModalSelector';
 import { GlobalContext } from '../context/GlobalContext';
 
-
-
-const TodoElement = ({ id, body, priority, completed }) => {
-
+const TodoElement = ({ id, body, priority, completed, dark }) => {
 
     const [isChecked, setIsChecked] = useState(false)
     const [modalDelete, setModalDelete] = useState(false);
     const [modSelector, setModSelector] = useState(false);
-    const { checkCompleted } = useContext(GlobalContext);
+    const { checkCompleted, term } = useContext(GlobalContext);
 
     const handleOnChange = () => {
         setIsChecked(!isChecked);
@@ -26,9 +23,17 @@ const TodoElement = ({ id, body, priority, completed }) => {
         low: "priority-green"
     }
 
+    const [text, setText] = useState({ __html: body })
+
+    useEffect(() => {
+        if(body){
+            setText({ __html: body.replace(term.toLowerCase(), `<span style="background-color:yellow">${term}</span>`) })
+        }
+    }, [term])
+
     return (
         <>
-            <div className="card">
+            <div className={`card ${dark ? 'dark' : ''}`} >
                 {/* <div className="container-card" key={id}> */}
                 <div className={`container-card ${completed ? "check-on" : ""}`} key={id}>
                     <div
@@ -42,7 +47,7 @@ const TodoElement = ({ id, body, priority, completed }) => {
                             onChange={handleOnChange}
                         />
                     </div>
-                    <div className="p-text">{body}</div>
+                    <div className="p-text" dangerouslySetInnerHTML={text} />
                     <div
                         className="delete-icon"
                         onClick={() => setModalDelete(true)}

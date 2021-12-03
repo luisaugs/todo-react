@@ -9,6 +9,10 @@
     box-shadow: 5px 5px 5px rgba(150, 150, 150, 0.5);
 }
 
+.dark {
+    background-color: cadetblue;
+}
+
 .container-card {
     display: flex;
     align-items: center;
@@ -55,7 +59,7 @@
     text-decoration-color: gray;
 }
 
-.delete-icon{
+.delete-icon {
     width: 4%;
     font-size: 1.75em;
     line-height: 25px;
@@ -74,7 +78,8 @@
     .container-card {
         justify-content: space-between
     }
-    .priority-btn{
+
+    .priority-btn {
         /* width: 15%; */
     }
 
@@ -82,7 +87,7 @@
         width: 70%;
     }
 
-    .delete-icon{
+    .delete-icon {
         width: 10%;
     }
 }
