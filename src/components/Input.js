@@ -5,14 +5,10 @@ import './Input.css';
 
 const Input = ({ openModal }) => {
 
-
     const [body, setBody] = useState("");
     const {addTodo}=useContext(GlobalContext);
 
-
-
     const handleSubmit = (e) => {
-
         e.preventDefault();
 
         if (!body) {
@@ -23,15 +19,15 @@ const Input = ({ openModal }) => {
         addTodo({
             id: Date.now(),
             body: body,
-            priority: p[parseInt(Math.random() * 3)],
+            // priority: p[parseInt(Math.random() * 3)],
+            priority: "high",
             completed: false
         })
 
         setBody("")
     }
 
-    const p = ["high", "low", "medium"]
-
+    // const p = ["high", "low", "medium"]
 
     return (
         <div className="text-input-container">
@@ -53,7 +49,6 @@ const Input = ({ openModal }) => {
             </form>
         </div>
     );
-
 }
 
 export default Input;

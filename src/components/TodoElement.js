@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
-import ModalDelete from './ModalDelete';
 import { X } from 'react-bootstrap-icons';
 import './TodoElement.css';
+import ModalDelete from './ModalDelete';
 import ModalSelector from './ModalSelector';
 import { GlobalContext } from '../context/GlobalContext';
 
@@ -56,7 +56,6 @@ const TodoElement = ({ id, body, priority, completed }) => {
                 <ModalDelete
                     closeModalDelete={() => setModalDelete(false)}
                     id={id}
-                // removeTodo={removeTodo}
                 />
             }
 
@@ -66,7 +65,6 @@ const TodoElement = ({ id, body, priority, completed }) => {
                     id={id}
                 />
             }
-
         </>
     );
 

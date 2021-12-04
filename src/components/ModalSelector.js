@@ -33,13 +33,13 @@ const ModalSelector = ({ closeModalSelector, id }) => {
                         LOW
                     </button>
                 </div>
-                <div className="cont">
+                {/* <div className="cont">
                     <button className="btn btn-close"
                         onClick={closeModalSelector}
                     >
                         Close
                     </button>
-                </div>
+                </div> */}
             </div>
         </div>
     )

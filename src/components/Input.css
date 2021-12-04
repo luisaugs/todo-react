@@ -54,7 +54,8 @@
     }
 
     .text-input-container {
-       padding: 0.5em 0;
+        width: 90%;
+        padding: 0.5em 0;
     }
 
     .text-input {
@@ -63,33 +64,3 @@
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media screen and (max-width:500px) {
-    .text-input-container {
-        width: 90%;
-    }
-
-    .text-input {
-       
-    }
-    
-    .btn-submit {
-        
-    }
-    
-
-}
