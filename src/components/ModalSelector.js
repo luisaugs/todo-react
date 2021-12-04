@@ -3,32 +3,32 @@ import { GlobalContext } from '../context/GlobalContext';
 import './ModalSelector.css';
 
 
-const ModalSelector = ({ closeModalSelector, id }) => {
+const ModalSelector = () => {
 
 
-    const { checkColor } = useContext(GlobalContext);
+    const { checkColor, closeModalPriority, idFromTodo } = useContext(GlobalContext);
 
 
     return (
-        <div className="main-modal-selector" onClick={closeModalSelector}>
+        <div className="main-modal-selector" onClick={closeModalPriority}>
             <div className="main-card-selector">
                 <h2 className="selector-title">Select the priority of the todo</h2>
                 <div className="btn-container cont">
                     <button
                         className="btn btn-priority-high"
-                        onClick={() => checkColor(id, "high")}
+                        onClick={() => checkColor(idFromTodo, "high")}
                     >
                         HIGH
                     </button>
                     <button
                         className="btn btn-priority-med"
-                        onClick={() => checkColor(id, "medium")}
+                        onClick={() => checkColor(idFromTodo, "medium")}
                     >
                         MEDIUM
                     </button>
                     <button
                         className="btn btn-priority-low"
-                        onClick={()=>checkColor(id,"low")}
+                        onClick={()=>checkColor(idFromTodo,"low")}
                     >
                         LOW
                     </button>

@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react';
 import { X } from 'react-bootstrap-icons';
 import './TodoElement.css';
-import ModalDelete from './ModalDelete';
 import ModalSelector from './ModalSelector';
 import { GlobalContext } from '../context/GlobalContext';
 
@@ -11,9 +10,8 @@ const TodoElement = ({ id, body, priority, completed }) => {
 
 
     const [isChecked, setIsChecked] = useState(false)
-    const [modalDelete, setModalDelete] = useState(false);
     const [modSelector, setModSelector] = useState(false);
-    const { checkCompleted } = useContext(GlobalContext);
+    const { checkCompleted, openModalDelete, openModalPriority } = useContext(GlobalContext);
 
     const handleOnChange = () => {
         setIsChecked(!isChecked);
@@ -33,7 +31,7 @@ const TodoElement = ({ id, body, priority, completed }) => {
                 <div className={`container-card ${completed ? "check-on" : ""}`} key={id}>
                     <div
                         className={`priority-btn ${priorities[priority]}`}
-                        onClick={() => { setModSelector(true) }}
+                        onClick={()=>openModalPriority(id)}
                     ></div>
                     <div>
                         <input
@@ -45,26 +43,19 @@ const TodoElement = ({ id, body, priority, completed }) => {
                     <div className="p-text">{body}</div>
                     <div
                         className="delete-icon"
-                        onClick={() => setModalDelete(true)}
+                        onClick={()=>openModalDelete(id)}
                     >
                         <X className="" />
                     </div>
                 </div>
             </div>
 
-            {modalDelete &&
-                <ModalDelete
-                    closeModalDelete={() => setModalDelete(false)}
-                    id={id}
-                />
-            }
-
             {modSelector &&
                 <ModalSelector
                     closeModalSelector={() => setModSelector(false)}
                     id={id}
                 />
-            }
+            } 
         </>
     );
 

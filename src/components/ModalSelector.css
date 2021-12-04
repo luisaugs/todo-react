@@ -71,24 +71,24 @@
 }
 
 .btn-priority-high {
-    background-color: red;
-    border: 1px solid red;
+    background-color: #EF4444;
+    border: 1px solid #EF4444;
     color: white;
     transition: 350ms ease-in;
     transform: scale(1.00);
 }
 
 .btn-priority-med {
-    background-color: blue;
-    border: 1px solid blue;
+    background-color: #F59E0B;
+    border: 1px solid #F59E0B;
     color: white;
     transition: 350ms ease-in;
     transform: scale(1.00);
 }
 
 .btn-priority-low {
-    background-color: green;
-    border: 1px solid green;
+    background-color: #10B981;
+    border: 1px solid #10B981;
     color: white;
     transition: 350ms ease-in;
     transform: scale(1.00);
@@ -97,24 +97,24 @@
 
 .btn-priority-high:hover {
     background-color: white;
-    border: 1px solid red;
-    color: red;
+    border: 1px solid #EF4444;
+    color: #EF4444;
     transition: 350ms ease-in;
     transform: scale(1.05);
 }
 
 .btn-priority-med:hover {
     background-color: white;
-    border: 1px solid blue;
-    color: blue;
+    border: 1px solid #F59E0B;
+    color: #F59E0B;
     transition: 350ms ease-in;
     transform: scale(1.05);
 }
 
 .btn-priority-low:hover {
     background-color: white;
-    border: 1px solid green;
-    color: green;
+    border: 1px solid #10B981;
+    color: #10B981;
     transition: 350ms ease-in;
     transform: scale(1.05);
 }

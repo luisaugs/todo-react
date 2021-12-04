@@ -12,7 +12,7 @@ const SearchInput = () => {
             <div className="icon-container">
                 <Search />
             </div>
-            <form className="form-input" onSubmit={e => e.preventDefault()}>
+            <form className="form-input">
                 <input
                     className="search-input"
                     placeholder="search"
@@ -25,4 +25,4 @@ const SearchInput = () => {
     )
 }
 
-export default SearchInput
+export default SearchInput;

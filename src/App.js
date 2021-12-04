@@ -1,9 +1,13 @@
 import { useContext, useState } from 'react';
 
 import Input from './components/Input';
+import ModalDelete from './components/ModalDelete';
+import ModalSelector from './components/ModalSelector';
 import MsgAlert from './components/MsgAlert';
 import NoTodos from './components/NoTodos';
 import SearchInput from './components/SearchInput';
+import TodoContainerComplete from './components/TodoContainerComplete';
+import TodoContainerIncomplete from './components/TodoContainerIncomplete';
 import TodoElement from './components/TodoElement';
 import { GlobalContext } from './context/GlobalContext';
 
@@ -11,7 +15,7 @@ function App() {
 
 
   const [alert, setAlert] = useState(false)
-  const { todos, todosTemp } = useContext(GlobalContext)
+  const { todos, todosTemp, completed, incompleted, modalDelete, setModalDelete, idFromTodo, modSelector } = useContext(GlobalContext)
 
   // const iterateFunction = (obj, id) => {
   //   if (obj.id === id) {
@@ -55,21 +59,41 @@ function App() {
 
 
       {/* todo list */}
-      {!todosTemp.length &&
+      {/* {!todosTemp.length &&
         todos.map((todo) => (
           <TodoElement
             key={todo.id}
             {...todo}
           />
         ))
-      }
+      } */}
 
-
+      {incompleted && <TodoContainerIncomplete />}
+      {completed && <TodoContainerComplete />}
 
       {/* todo advice */}
       {
         todos.length === 0 && <NoTodos />
       }
+
+
+
+      {/* Modal delete todo */}
+      {modalDelete &&
+        <ModalDelete
+          closeModalDelete={() => setModalDelete(false)}
+          id={idFromTodo}
+        />
+      }
+
+      {/* Modal priority selector */}
+      {modSelector &&
+        <ModalSelector
+          // closeModalSelector={() => setModSelector(false)}
+          // id={id}
+        />
+      }
+
 
       {/* todo modal alert no input */}
       {alert && <MsgAlert
