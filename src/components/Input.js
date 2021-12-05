@@ -3,16 +3,15 @@ import { GlobalContext } from '../context/GlobalContext';
 import './Input.css';
 
 
-const Input = ({ openModal }) => {
+const Input = () => {
 
     const [body, setBody] = useState("");
-    const {addTodo}=useContext(GlobalContext);
+    const { addTodo } = useContext(GlobalContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (!body) {
-            openModal()
             return
         }
 

@@ -3,21 +3,23 @@ import { GlobalContext } from "../context/GlobalContext";
 import './TodoContainer.css';
 import TodoElement from './TodoElement';
 
-const TodoContainerIncomplete = () => {
+const ResultSearch = () => {
 
-    const { todos, todosTemp } = useContext(GlobalContext);
+    const { todosTemp } = useContext(GlobalContext);
 
     return (
         <div className="container-fieldset">
             <fieldset className="fieldset">
-                <legend>Incompleted</legend>
-                {!todosTemp.length && todos.filter(todo => !todo.completed).reverse().map(todo => (
+                <legend>Results</legend>
+
+                {!todosTemp.length && todosTemp.map(todo => (
                     <TodoElement key={todo.id} {...todo} />
                 ))
                 }
+
             </fieldset>
         </div>
     )
 }
 
-export default TodoContainerIncomplete;
+export default ResultSearch;

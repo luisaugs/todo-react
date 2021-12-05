@@ -1,21 +1,22 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import Input from './components/Input';
 import ModalDelete from './components/ModalDelete';
 import ModalSelector from './components/ModalSelector';
-import MsgAlert from './components/MsgAlert';
+// import MsgAlert from './components/MsgAlert';
 import NoTodos from './components/NoTodos';
+import ResultSearch from './components/ResultSearch';
 import SearchInput from './components/SearchInput';
 import TodoContainerComplete from './components/TodoContainerComplete';
 import TodoContainerIncomplete from './components/TodoContainerIncomplete';
-import TodoElement from './components/TodoElement';
+// import TodoElement from './components/TodoElement';
 import { GlobalContext } from './context/GlobalContext';
 
 function App() {
 
 
-  const [alert, setAlert] = useState(false)
-  const { todos, todosTemp, completed, incompleted, modalDelete, setModalDelete, idFromTodo, modSelector } = useContext(GlobalContext)
+  // const [alert, setAlert] = useState(false)
+  const { todos, todosTemp, completed, incompleted, modalDelete, setModalDelete, idFromTodo, modSelector, searching } = useContext(GlobalContext)
 
   // const iterateFunction = (obj, id) => {
   //   if (obj.id === id) {
@@ -24,13 +25,13 @@ function App() {
   //   return obj
   // }
 
-  const closeModal = () => {
-    setAlert(false)
-  }
+  // const closeModal = () => {
+  //   setAlert(false)
+  // }
 
-  const openModal = () => {
-    setAlert(true)
-  }
+  // const openModal = () => {
+  //   setAlert(true)
+  // }
 
   return (
     <div className="App">
@@ -38,14 +39,14 @@ function App() {
         todo
       </h1>
       {/* todo input */}
-      <Input
-        openModal={openModal}
-      />
+      <Input />
+
       {/* todo search input box */}
       {todos.length > 5 && <SearchInput />}
 
       {/* todo filtered */}
-      {
+      {/* {
+        searching &&
         todosTemp &&
         todosTemp.map((todo) => (
           <TodoElement
@@ -53,30 +54,18 @@ function App() {
             {...todo}
           />
         ))
+      } */}
+      {
+        searching && <ResultSearch />
       }
 
-
-
-
-      {/* todo list */}
-      {/* {!todosTemp.length &&
-        todos.map((todo) => (
-          <TodoElement
-            key={todo.id}
-            {...todo}
-          />
-        ))
-      } */}
-
-      {incompleted && <TodoContainerIncomplete />}
-      {completed && <TodoContainerComplete />}
+      {!searching && incompleted && <TodoContainerIncomplete />}
+      {!searching && completed && <TodoContainerComplete />}
 
       {/* todo advice */}
       {
         todos.length === 0 && <NoTodos />
       }
-
-
 
       {/* Modal delete todo */}
       {modalDelete &&
@@ -89,16 +78,16 @@ function App() {
       {/* Modal priority selector */}
       {modSelector &&
         <ModalSelector
-          // closeModalSelector={() => setModSelector(false)}
-          // id={id}
+        // closeModalSelector={() => setModSelector(false)}
+        // id={id}
         />
       }
 
 
       {/* todo modal alert no input */}
-      {alert && <MsgAlert
+      {/* {alert && <MsgAlert
         closeModal={closeModal}
-      />}
+      />} */}
     </div>
   );
 }

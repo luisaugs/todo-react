@@ -11,11 +11,13 @@ export default function GlobalProvider({ children }) {
     const [modalDelete, setModalDelete] = useState(false);
     const [idFromTodo, setIdFromTodo] = useState(null);
     const [modSelector, setModSelector] = useState(false);
+    const [searching, setSearching] = useState(false)
     // const [selectPriority, setSelectPriority] = useState("high");
-    
+
     //add todo to array
     const addTodo = (todo) => {
         setTodos((old) => [...old, todo])
+        reset()
     }
 
     //remove todo from array
@@ -37,12 +39,10 @@ export default function GlobalProvider({ children }) {
 
     const searchTodo = (text) => {
         if (text) {
-            setIncompleted(false)
-            setCompleted(false)
-            clearTimeout();
-            setTimeout(() => {
-                setTodosTemp(todos.filter(todo => todo.body.toLowerCase().includes(text.toLowerCase())))
-            }, 250)
+            setSearching(true)
+            setTodosTemp(todos.filter(todo => todo.body.toLowerCase().includes(text.toLowerCase())))
+        } else {
+            setSearching(false)
         }
     }
 
@@ -66,33 +66,39 @@ export default function GlobalProvider({ children }) {
         setModSelector(false)
     }
 
-
-
     // verify state todo
     const checkIncompletedTodo = (todos) => {
         return (
-        todos.some( todo => {
-            if (todo.completed === false) {
-                return true
-            } else {
-                return false
-            }
-        })
+            todos.some(todo => {
+                if (todo.completed === false) {
+                    return true
+                } else {
+                    return false
+                }
+            })
         )
     }
 
     const checkCompletedTodo = (todos) => {
         return (
-        todos.some( todo => {
-            if (todo.completed === true) {
-                return true
-            } else {
-                return false
-            }
-        })
+            todos.some(todo => {
+                if (todo.completed === true) {
+                    return true
+                } else {
+                    return false
+                }
+            })
         )
     }
- 
+
+    const reset = () => {
+        setSearching(false);
+        if (todos) {
+            setIncompleted(checkIncompletedTodo(todos))
+            setCompleted(checkCompletedTodo(todos))
+        }
+    }
+
     useEffect(() => {
         if (localStorage.getItem('todos')) {
             setTodos(JSON.parse(localStorage.getItem('todos')))
@@ -109,7 +115,7 @@ export default function GlobalProvider({ children }) {
         // console.log(checkCompletedTodo(todos),"🧺")
         setIncompleted(checkIncompletedTodo(todos))
         setCompleted(checkCompletedTodo(todos))
-    }, [todos])
+    }, [todos, todosTemp,searching])
 
 
     const values = {
@@ -130,7 +136,7 @@ export default function GlobalProvider({ children }) {
         openModalPriority,
         closeModalPriority,
         modSelector,
-        // selectPriority
+        searching
     }
 
     return (
