@@ -1,0 +1,87 @@
+.main-modal-edit {
+    background-color: rgba(100, 100, 100, 0.5);
+    position: fixed;
+    backdrop-filter: blur(2px);
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-edit-container {
+    width: 80%;
+    min-width: 300px;
+    padding: 1em 0;
+    /* height: 10em; */
+    background-color:  rgb(250, 250, 250);
+    top: calc((100% - 10em)/2);
+    border-radius: 0.75em;
+    max-width: 400px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.form-edit {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.edit-text-area {
+    width: 90%;
+    margin: 0 auto;
+    resize: vertical;
+    max-height: 500px;
+    min-height: 4em;
+    outline: none;
+    font-family:'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif; ;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.edit-text-btn {
+    cursor: pointer;
+    margin: 10px auto;
+    margin-bottom: 0;
+    height: 2.5em;
+    width: 200px;
+    max-width: 200px;
+    border: 1px solid dodgerblue;
+    background-color: dodgerblue;
+    border-radius: 5px;
+    color:  rgb(250, 250, 250);
+    transition: 350ms ease-in;
+}
+
+.edit-text-dis {
+    /* cursor: pointer; */
+    margin: 10px auto;
+    margin-bottom: 0;
+    height: 2.5em;
+    width: 200px;
+    max-width: 200px;
+    border: 1px solid rgb(150, 150, 150);;
+    background-color: rgb(250, 250, 250);
+    border-radius: 5px;
+    color:  rgb(150, 150, 150);
+    transition: 350ms ease-in;
+}
+
+.edit-text-btn:hover {
+    background-color:rgb(250, 250, 250);
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+    font-weight: 700;
+    transition: 350ms ease-out;
+}
+/* 
+@media (hover: none) {
+    .edit-text-btn:hover { color: inherit; }
+  } */

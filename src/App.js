@@ -2,22 +2,19 @@ import { useContext } from 'react';
 
 import Input from './components/Input';
 import ModalDelete from './components/ModalDelete';
+import ModalEdit from './components/ModalEdit';
 import ModalSelector from './components/ModalSelector';
-// import MsgAlert from './components/MsgAlert';
 import NoTodos from './components/NoTodos';
 import ResultSearch from './components/ResultSearch';
 import SearchInput from './components/SearchInput';
 import TodoContainerComplete from './components/TodoContainerComplete';
 import TodoContainerIncomplete from './components/TodoContainerIncomplete';
-// import TodoElement from './components/TodoElement';
 import { GlobalContext } from './context/GlobalContext';
 
 function App() {
 
 
-  const { todos, completed, incompleted, modalDelete, setModalDelete, idFromTodo, modSelector, searching } = useContext(GlobalContext)
-
-
+  const { todos, completed, incompleted, modalDelete, setModalDelete, idFromTodo, modSelector, searching, modalEdit, closeModalEdit } = useContext(GlobalContext)
 
   return (
     <div className="App">
@@ -27,6 +24,13 @@ function App() {
 
       {/* todo input */}
       <Input />
+
+      {/* Modal edit */}
+      {modalEdit && 
+        <ModalEdit
+          closeModalEdit={closeModalEdit}
+        />
+      }
       
       {/* todo advice */}
       {todos.length === 0 && <NoTodos />}
@@ -50,7 +54,7 @@ function App() {
       }
 
       {/* Modal priority selector */}
-      {modSelector && <ModalSelector />}
+      {modSelector && <ModalSelector />} 
     </div>
   );
 }

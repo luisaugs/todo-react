@@ -15,7 +15,7 @@ const SearchInput = () => {
             <form className="form-input" onSubmit={e =>  e.preventDefault() }>
                 <input
                     className="search-input"
-                    placeholder="search"
+                    placeholder="search..."
                     name="searcher"
                     type="text"
                     onChange={e => {searchTodo(e.target.value)}}

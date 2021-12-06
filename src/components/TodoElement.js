@@ -11,7 +11,7 @@ const TodoElement = ({ id, body, priority, completed }) => {
 
     const [isChecked, setIsChecked] = useState(false)
     const [modSelector, setModSelector] = useState(false);
-    const { checkCompleted, openModalDelete, openModalPriority } = useContext(GlobalContext);
+    const { checkCompleted, openModalDelete, openModalPriority, openModalEdit } = useContext(GlobalContext);
 
     const handleOnChange = () => {
         setIsChecked(!isChecked);
@@ -40,7 +40,11 @@ const TodoElement = ({ id, body, priority, completed }) => {
                             onChange={handleOnChange}
                         />
                     </div>
-                    <div className="p-text">{body}</div>
+                    <div 
+                        className="p-text"
+                        onClick={()=>openModalEdit(id)}
+                    >
+                        {body}</div>
                     <div
                         className="delete-icon"
                         onClick={()=>openModalDelete(id)}

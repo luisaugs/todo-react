@@ -127,8 +127,8 @@
     .main-card-selector {
         width: 80%;
         min-width: 300px;
-        height: 18em;
-        top: calc((100% - 18em)/2); 
+        height: 15em;
+        top: calc((100% - 10em)/2); 
     }
 
     .selector-title {

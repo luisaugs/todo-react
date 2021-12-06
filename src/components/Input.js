@@ -11,13 +11,13 @@ const Input = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!body) {
+        if (!body.trim()) {
             return
         }
 
         addTodo({
             id: Date.now(),
-            body: body,
+            body: body.trim(),
             // priority: p[parseInt(Math.random() * 3)],
             priority: "high",
             completed: false

@@ -11,12 +11,13 @@ export default function GlobalProvider({ children }) {
     const [modalDelete, setModalDelete] = useState(false);
     const [idFromTodo, setIdFromTodo] = useState(null);
     const [modSelector, setModSelector] = useState(false);
-    const [searching, setSearching] = useState(false)
+    const [searching, setSearching] = useState(false);
+    const [modalEdit, setModalEdit] = useState(false);
+    const [bodyFromTodo, setBodyFromTodo] = useState([]);
 
     //add todo to array
     const addTodo = (todo) => {
         setTodos((old) => [...old, todo])
-        reset()
     }
 
     //remove todo from array
@@ -36,6 +37,19 @@ export default function GlobalProvider({ children }) {
         setTodos(todos.map(item => item.id === id ? { ...item, priority } : item))
     }
 
+    //edit todo
+    const editTodo = (id, text) => {
+        setTodos(todos.map(item => item.id === id ? { ...item, body: text} : item))
+        setModSelector(false)
+        closeModalEdit()
+    }
+
+    //return todo
+    const returnTodo = (id) => {
+        setBodyFromTodo(todos.filter(todo =>  todo.id === id ));
+    }
+
+    //search todo
     const searchTodo = (text) => {
         if (text) {
             setSearching(true)
@@ -68,6 +82,17 @@ export default function GlobalProvider({ children }) {
         setModSelector(false)
     }
 
+    //modal edit
+    const openModalEdit = (id) => {
+        setModalEdit(true)
+        returnTodo(id)
+        setIdFromTodo(id)
+    }
+
+    const closeModalEdit = () => {
+        setModalEdit(false)
+    }
+
     // verify state todo
     const checkIncompletedTodo = (todos) => {
         return (
@@ -93,20 +118,13 @@ export default function GlobalProvider({ children }) {
         )
     }
 
-    const reset = () => {
-        setSearching(false);
-        if (todos) {
-            setIncompleted(checkIncompletedTodo(todos))
-            setCompleted(checkCompletedTodo(todos))
-        }
-    }
-
     useEffect(() => {
         if (localStorage.getItem('todos')) {
             setTodos(JSON.parse(localStorage.getItem('todos')))
             setIncompleted(checkIncompletedTodo(todos))
             setCompleted(checkCompletedTodo(todos))
         }
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
@@ -134,7 +152,12 @@ export default function GlobalProvider({ children }) {
         openModalPriority,
         closeModalPriority,
         modSelector,
-        searching
+        searching,
+        closeModalEdit,
+        openModalEdit,
+        modalEdit,
+        bodyFromTodo, 
+        editTodo
     }
 
     return (

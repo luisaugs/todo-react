@@ -11,7 +11,7 @@ const TodoContainerComplete = () => {
         <div className="container-fieldset">
             <fieldset className="fieldset">
                 <legend>Completed</legend>
-                {todos && todos.filter(todo => todo.completed).map(todo => (
+                {todos && todos.filter(todo => todo.completed).reverse().map(todo => (
                     <TodoElement key={todo.id} {...todo} />
                 ))
                 }
