@@ -37,6 +37,10 @@
     cursor: pointer;
 }
 
+.checkbox:hover {
+    cursor: pointer;
+}
+
 .priority-red {
     background-color: #EF4444;
 }

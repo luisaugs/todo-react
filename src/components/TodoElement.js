@@ -27,7 +27,6 @@ const TodoElement = ({ id, body, priority, completed }) => {
     return (
         <>
             <div className="card">
-                {/* <div className="container-card" key={id}> */}
                 <div className={`container-card ${completed ? "check-on" : ""}`} key={id}>
                     <div
                         className={`priority-btn ${priorities[priority]}`}
@@ -35,6 +34,7 @@ const TodoElement = ({ id, body, priority, completed }) => {
                     ></div>
                     <div>
                         <input
+                            className="checkbox"
                             type="checkbox"
                             checked={completed}
                             onChange={handleOnChange}

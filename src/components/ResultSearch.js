@@ -12,7 +12,7 @@ const ResultSearch = () => {
             <fieldset className="fieldset">
                 <legend>Results</legend>
 
-                {!todosTemp.length && todosTemp.map(todo => (
+                {todosTemp && todosTemp.map(todo => (
                     <TodoElement key={todo.id} {...todo} />
                 ))
                 }

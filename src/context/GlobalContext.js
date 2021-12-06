@@ -12,7 +12,6 @@ export default function GlobalProvider({ children }) {
     const [idFromTodo, setIdFromTodo] = useState(null);
     const [modSelector, setModSelector] = useState(false);
     const [searching, setSearching] = useState(false)
-    // const [selectPriority, setSelectPriority] = useState("high");
 
     //add todo to array
     const addTodo = (todo) => {
@@ -40,7 +39,10 @@ export default function GlobalProvider({ children }) {
     const searchTodo = (text) => {
         if (text) {
             setSearching(true)
-            setTodosTemp(todos.filter(todo => todo.body.toLowerCase().includes(text.toLowerCase())))
+            clearTimeout()
+            setTimeout(() => {
+                setTodosTemp(todos.filter(todo => todo.body.toLowerCase().includes(text.toLowerCase())))
+            }, 250)
         } else {
             setSearching(false)
         }
@@ -102,8 +104,6 @@ export default function GlobalProvider({ children }) {
     useEffect(() => {
         if (localStorage.getItem('todos')) {
             setTodos(JSON.parse(localStorage.getItem('todos')))
-            // console.log(checkIncompletedTodo(todos))
-            // console.log(checkCompletedTodo(todos))
             setIncompleted(checkIncompletedTodo(todos))
             setCompleted(checkCompletedTodo(todos))
         }
@@ -111,11 +111,9 @@ export default function GlobalProvider({ children }) {
 
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos))
-        // console.log(checkIncompletedTodo(todos), "🍑")
-        // console.log(checkCompletedTodo(todos),"🧺")
         setIncompleted(checkIncompletedTodo(todos))
         setCompleted(checkCompletedTodo(todos))
-    }, [todos, todosTemp,searching])
+    }, [todos, todosTemp, searching])
 
 
     const values = {

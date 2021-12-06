@@ -5,13 +5,13 @@ import TodoElement from './TodoElement';
 
 const TodoContainerComplete = () => {
 
-    const { todos, todosTemp } = useContext(GlobalContext);
+    const { todos } = useContext(GlobalContext);
 
     return (
         <div className="container-fieldset">
             <fieldset className="fieldset">
                 <legend>Completed</legend>
-                {!todosTemp.length && todos.filter(todo => todo.completed).map(todo => (
+                {todos && todos.filter(todo => todo.completed).map(todo => (
                     <TodoElement key={todo.id} {...todo} />
                 ))
                 }
