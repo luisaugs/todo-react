@@ -1,5 +1,4 @@
-import { useContext, useEffect, useRef } from 'react';
-import { useState } from 'react/cjs/react.development';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 import './ModalEdit.css';
 
@@ -17,7 +16,6 @@ const ModalEdit = () => {
         }
     }
 
-
     const handleSubmit = e => {
         e.preventDefault();
         if (!e.target.inputArea.value.trim()) return
@@ -25,14 +23,30 @@ const ModalEdit = () => {
         editTodo(idFromTodo, newBody)
     }
 
+    const handleEsc = (e) => {
+
+        if (e.keyCode === 27) {
+            closeModalEdit();
+        }
+    }
+
+
     useEffect(() => {
         ref.current.select();
     }, []);
 
+    useEffect(() => {
+        window.addEventListener('keydown', handleEsc)
+
+        return () => {
+            window.removeEventListener('keydown', handleEsc)
+        }
+    })
+
     return (
-        <div 
-            className="main-modal-edit" 
-            onClick={(e)=> {handleClick(e)}}
+        <div
+            className="main-modal-edit"
+            onClick={(e) => { handleClick(e) }}
             data-close="closeModal"
         >
             <div className="modal-edit-container">
@@ -48,7 +62,7 @@ const ModalEdit = () => {
                     </textarea>
                     {!newBody &&
                         <button
-                            className="edit-text-dis" 
+                            className="edit-text-dis"
                             disabled
                         >
                             Save changes
