@@ -1,7 +1,7 @@
 import { Search } from 'react-bootstrap-icons';
 import { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalContext';
-import './Search.css';
+import { GlobalContext } from '../../context/GlobalContext';
+import '../styles/Search.css';
 
 const SearchInput = () => {
 

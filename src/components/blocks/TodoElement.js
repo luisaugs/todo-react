@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 import { X } from 'react-bootstrap-icons';
-import './TodoElement.css';
-import ModalSelector from './ModalSelector';
-import { GlobalContext } from '../context/GlobalContext';
+import '../styles/TodoElement.css';
+import ModalSelector from '../blocks/ModalSelector';
+import { GlobalContext } from '../../context/GlobalContext';
 
 
 

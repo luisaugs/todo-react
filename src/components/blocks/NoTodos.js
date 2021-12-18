@@ -1,4 +1,4 @@
-import './NoTodos.css';
+import '../styles/NoTodos.css';
 
 const NoTodos = () => {
     return (

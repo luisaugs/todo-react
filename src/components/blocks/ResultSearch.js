@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { GlobalContext } from "../context/GlobalContext";
-import './TodoContainer.css';
-import TodoElement from './TodoElement';
+import { GlobalContext } from "../../context/GlobalContext";
+import '../styles/TodoContainer.css';
+import TodoElement from '../blocks/TodoElement';
 
 const ResultSearch = () => {
 

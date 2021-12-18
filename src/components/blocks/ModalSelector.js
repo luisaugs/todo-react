@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
-import { GlobalContext } from '../context/GlobalContext';
-import './ModalSelector.css';
+import { GlobalContext } from '../../context/GlobalContext';
+import '../styles/ModalSelector.css';
 
 
 const ModalSelector = () => {

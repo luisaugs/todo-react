@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
-import { GlobalContext } from '../context/GlobalContext';
-import './Input.css';
+import { GlobalContext } from '../../context/GlobalContext';
+import '../styles/Input.css';
 
 
 const Input = () => {

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
-import { GlobalContext } from '../context/GlobalContext';
-import './MsgAlert.css';
+import { GlobalContext } from '../../context/GlobalContext';
+import '../styles/MsgAlert.css';
 
 const ModalDelete = () => {
 

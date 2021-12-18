@@ -35,6 +35,7 @@ export default function GlobalProvider({ children }) {
     //set priority color
     const checkColor = (id, priority) => {
         setTodos(todos.map(item => item.id === id ? { ...item, priority } : item))
+        setModSelector(false)
     }
 
     //edit todo

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { GlobalContext } from '../context/GlobalContext';
-import './ModalEdit.css';
+import { GlobalContext } from '../../context/GlobalContext';
+import '../styles/ModalEdit.css';
 
 
 const ModalEdit = () => {

@@ -1,14 +1,14 @@
 import { useContext } from 'react';
 
-import Input from './components/Input';
-import ModalDelete from './components/ModalDelete';
-import ModalEdit from './components/ModalEdit';
-import ModalSelector from './components/ModalSelector';
-import NoTodos from './components/NoTodos';
-import ResultSearch from './components/ResultSearch';
-import SearchInput from './components/SearchInput';
-import TodoContainerComplete from './components/TodoContainerComplete';
-import TodoContainerIncomplete from './components/TodoContainerIncomplete';
+import Input from './components/blocks/Input';
+import ModalDelete from './components/blocks/ModalDelete';
+import ModalEdit from './components/blocks/ModalEdit';
+import ModalSelector from './components/blocks/ModalSelector';
+import NoTodos from './components/blocks/NoTodos';
+import ResultSearch from './components/blocks/ResultSearch';
+import SearchInput from './components/blocks/SearchInput';
+import TodoContainerComplete from './components/blocks/TodoContainerComplete';
+import TodoContainerIncomplete from './components/blocks/TodoContainerIncomplete';
 import { GlobalContext } from './context/GlobalContext';
 
 function App() {
