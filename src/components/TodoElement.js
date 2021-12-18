@@ -6,7 +6,7 @@ import { GlobalContext } from '../context/GlobalContext';
 
 
 
-const TodoElement = ({ id, body, priority, completed }) => {
+const TodoElement = ({ id, body, priority, completed, todo }) => {
 
 
     const [isChecked, setIsChecked] = useState(false)
@@ -42,7 +42,7 @@ const TodoElement = ({ id, body, priority, completed }) => {
                     </div>
                     <div 
                         className="p-text"
-                        onClick={()=>openModalEdit(id)}
+                        onClick={()=>openModalEdit(todo)}
                     >
                         {body}</div>
                     <div

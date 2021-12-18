@@ -13,7 +13,7 @@ const TodoContainerIncomplete = () => {
             <fieldset className="fieldset">
                 <legend>Incompleted</legend>
                 {todos && todos.filter(todo => !todo.completed).reverse().map(todo => (
-                    <TodoElement key={todo.id} {...todo} />
+                    <TodoElement key={todo.id} {...todo} todo={todo} />
                 ))
                 }
             </fieldset>

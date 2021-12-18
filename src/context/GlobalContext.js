@@ -13,7 +13,11 @@ export default function GlobalProvider({ children }) {
     const [modSelector, setModSelector] = useState(false);
     const [searching, setSearching] = useState(false);
     const [modalEdit, setModalEdit] = useState(false);
-    const [bodyFromTodo, setBodyFromTodo] = useState([]);
+    // const [bodyFromTodo, setBodyFromTodo] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("")
+
+
+    const [todoEditing, setTodoEditing] = useState({});
 
     //add todo to array
     const addTodo = (todo) => {
@@ -35,28 +39,37 @@ export default function GlobalProvider({ children }) {
     //set priority color
     const checkColor = (id, priority) => {
         setTodos(todos.map(item => item.id === id ? { ...item, priority } : item))
+        setTodosTemp(todosTemp.map(item => item.id === id ? { ...item, priority } : item))
     }
 
     //edit todo
-    const editTodo = (id, text) => {
-        setTodos(todos.map(item => item.id === id ? { ...item, body: text} : item))
+    const editTodo = (todoEditing, body) => {
+        setTodos(todos.map(item => item.id === todoEditing.id ? { ...todoEditing, body } : item))
         setModSelector(false)
         closeModalEdit()
     }
 
     //return todo
-    const returnTodo = (id) => {
-        setBodyFromTodo(todos.filter(todo =>  todo.id === id ));
-    }
+    // const returnTodo = (id) => {
+    //     setBodyFromTodo(todos.filter(todo => todo.id === id));
+    // }
 
     //search todo
     const searchTodo = (text) => {
         if (text) {
             setSearching(true)
-            clearTimeout()
-            setTimeout(() => {
-                setTodosTemp(todos.filter(todo => todo.body.toLowerCase().includes(text.toLowerCase())))
-            }, 250)
+            setSearchTerm(text)
+            // clearTimeout()
+            // setTimeout(() => {
+            //     // setTodosTemp(todos.filter(todo => todo.body.toLowerCase().includes(text.toLowerCase())))
+            //     // const newArray = []
+            //     // todos.forEach(todo => {
+            //     //     if(todo.body.toLowerCase().includes(text.toLowerCase())){
+            //     //         newArray.push(todo)
+            //     //     }
+            //     // })
+            //     setTodosTemp(newArray)
+            // }, 250)
         } else {
             setSearching(false)
         }
@@ -83,10 +96,12 @@ export default function GlobalProvider({ children }) {
     }
 
     //modal edit
-    const openModalEdit = (id) => {
+    const openModalEdit = (todo) => {
         setModalEdit(true)
-        returnTodo(id)
-        setIdFromTodo(id)
+        // returnTodo(id)
+        // setIdFromTodo(id)
+
+        setTodoEditing(todo)
     }
 
     const closeModalEdit = () => {
@@ -156,8 +171,10 @@ export default function GlobalProvider({ children }) {
         closeModalEdit,
         openModalEdit,
         modalEdit,
-        bodyFromTodo, 
-        editTodo
+        // bodyFromTodo,
+        editTodo,
+        todoEditing,
+        searchTerm
     }
 
     return (

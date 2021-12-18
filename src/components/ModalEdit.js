@@ -1,12 +1,10 @@
-import { useContext, useEffect, useRef } from 'react';
-import { useState } from 'react/cjs/react.development';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { GlobalContext } from '../context/GlobalContext';
 import './ModalEdit.css';
 
-
 const ModalEdit = () => {
 
-    const { idFromTodo, editTodo, bodyFromTodo, closeModalEdit } = useContext(GlobalContext);
+    const { editTodo, closeModalEdit, todoEditing } = useContext(GlobalContext);
     const [newBody, setNewBody] = useState('');
     const ref = useRef();
 
@@ -22,7 +20,8 @@ const ModalEdit = () => {
         e.preventDefault();
         if (!e.target.inputArea.value.trim()) return
 
-        editTodo(idFromTodo, newBody)
+        // editTodo(idFromTodo, newBody)
+        editTodo(todoEditing, newBody)
     }
 
     useEffect(() => {
@@ -30,9 +29,9 @@ const ModalEdit = () => {
     }, []);
 
     return (
-        <div 
-            className="main-modal-edit" 
-            onClick={(e)=> {handleClick(e)}}
+        <div
+            className="main-modal-edit"
+            onClick={(e) => { handleClick(e) }}
             data-close="closeModal"
         >
             <div className="modal-edit-container">
@@ -40,7 +39,7 @@ const ModalEdit = () => {
                     <textarea
                         ref={ref}
                         className="edit-text-area"
-                        defaultValue={`${bodyFromTodo[0].body}`}
+                        defaultValue={todoEditing.body}
                         name="inputArea"
                         onChange={e => setNewBody(e.target.value.trim())}
                         autoFocus
@@ -48,7 +47,7 @@ const ModalEdit = () => {
                     </textarea>
                     {!newBody &&
                         <button
-                            className="edit-text-dis" 
+                            className="edit-text-dis"
                             disabled
                         >
                             Save changes
