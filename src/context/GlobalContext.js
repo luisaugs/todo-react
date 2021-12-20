@@ -5,7 +5,6 @@ export const GlobalContext = createContext()
 export default function GlobalProvider({ children }) {
 
     const [todos, setTodos] = useState([]);
-    const [todosTemp, setTodosTemp] = useState([]);
     const [completed, setCompleted] = useState(false);
     const [incompleted, setIncompleted] = useState(false);
     const [modalDelete, setModalDelete] = useState(false);
@@ -14,6 +13,7 @@ export default function GlobalProvider({ children }) {
     const [searching, setSearching] = useState(false);
     const [modalEdit, setModalEdit] = useState(false);
     const [bodyFromTodo, setBodyFromTodo] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("")
 
     //add todo to array
     const addTodo = (todo) => {
@@ -54,12 +54,10 @@ export default function GlobalProvider({ children }) {
     const searchTodo = (text) => {
         if (text) {
             setSearching(true)
-            clearTimeout()
-            setTimeout(() => {
-                setTodosTemp(todos.filter(todo => todo.body.toLowerCase().includes(text.toLowerCase())))
-            }, 250)
+            setSearchTerm(text)
         } else {
             setSearching(false)
+            setSearchTerm("")
         }
     }
 
@@ -132,7 +130,7 @@ export default function GlobalProvider({ children }) {
         localStorage.setItem('todos', JSON.stringify(todos))
         setIncompleted(checkIncompletedTodo(todos))
         setCompleted(checkCompletedTodo(todos))
-    }, [todos, todosTemp, searching])
+    }, [todos, searching])
 
 
     const values = {
@@ -143,7 +141,6 @@ export default function GlobalProvider({ children }) {
         checkCompleted,
         checkColor,
         searchTodo,
-        todosTemp,
         completed,
         incompleted,
         openModalDelete,
@@ -158,7 +155,8 @@ export default function GlobalProvider({ children }) {
         openModalEdit,
         modalEdit,
         bodyFromTodo, 
-        editTodo
+        editTodo,
+        searchTerm
     }
 
     return (
