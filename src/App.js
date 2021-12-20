@@ -13,9 +13,8 @@ import { GlobalContext } from './context/GlobalContext';
 
 function App() {
 
-
   const { todos, completed, incompleted, modalDelete, setModalDelete, idFromTodo, modSelector, searching, modalEdit, closeModalEdit } = useContext(GlobalContext)
-
+  
   return (
     <div className="App">
       <h1 className='main-title'>

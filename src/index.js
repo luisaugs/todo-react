@@ -14,5 +14,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+console.log("Luis Augsburger - Web developer");
+console.log("https://twitter.com/augsburger_luis");
 
 serviceWorkerRegistration.register();
